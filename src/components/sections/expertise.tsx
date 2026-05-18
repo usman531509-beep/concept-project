@@ -31,7 +31,7 @@ export default function Expertise() {
           <div className="col-span-1 md:col-span-6 md:text-right">
             <div className="flex items-center justify-start gap-3 md:justify-end">
               <span className="kanji text-xs text-[var(--color-mute)]">
-                意図あるデザイン
+                Considered work
               </span>
               <span className="inline-flex items-center">
                 <span className="size-2 rounded-full bg-[var(--color-fg)]" />

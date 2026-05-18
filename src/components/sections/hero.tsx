@@ -34,7 +34,7 @@ function HeroLeftRail() {
         Nocturne<span className="text-[var(--color-accent)] text-base">✱</span>
       </div>
       <div className="kanji font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
-        デザインスタジオ
+        Design Studio
       </div>
       <span className="block h-px w-10 bg-current opacity-50" />
 
@@ -143,7 +143,7 @@ function HeroContent() {
       >
         <span className="inline-flex items-center gap-2">
           <span className="size-1.5 rounded-full bg-[var(--color-accent)]" />
-          <span className="kanji">デザインスタジオ</span>
+          <span className="kanji">Design Studio</span>
         </span>
         <span className="hidden md:inline">
           12 Old Street · London EC1V 9HU
