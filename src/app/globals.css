@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #f4f1ea;
+  --color-bg-2: #ffffff;
+  --color-bg-soft: #f0ece2;
+  --color-bg-dark: #0a0a0a;
+  --color-fg: #0a0a0a;
+  --color-fg-2: #1a1a1a;
+  --color-mute: #6f6f6f;
+  --color-mute-2: #b3b3b3;
+  --color-display-grey: #adadad;
+  --color-line: rgba(10, 10, 10, 0.08);
+  --color-line-dark: rgba(255, 255, 255, 0.1);
+  --color-accent: #f04222;
+  --color-cream: #f0e7d5;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-feature-settings: "ss01", "ss02", "cv11";
+  letter-spacing: -0.04em;
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 50s linear infinite; }
+.animate-marquee-slow { animation: marquee 80s linear infinite; }
+.animate-marquee-rev { animation: marquee 50s linear infinite reverse; }
+.marquee-pause:hover .animate-marquee,
+.marquee-pause:hover .animate-marquee-slow,
+.marquee-pause:hover .animate-marquee-rev {
+  animation-play-state: paused;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+* { cursor: none; }
+@media (hover: none), (max-width: 768px) { * { cursor: auto; } }
+input, textarea { cursor: text; }
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  background: transparent;
+  color: var(--color-fg);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: background 0.4s var(--ease-out-expo), border-color 0.4s, color 0.4s;
+}
+.btn-pill:hover {
+  background: var(--color-fg);
+  color: var(--color-bg-2);
+  border-color: var(--color-fg);
+}
+
+.btn-pill-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: background 0.4s var(--ease-out-expo), border-color 0.4s;
+}
+.btn-pill-dark:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-fg);
+  color: var(--color-bg-2);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: background 0.4s var(--ease-out-expo);
+}
+.btn-solid:hover { background: var(--color-accent); }
+
+.hairline { border-top: 1px solid var(--color-line); }
+.hairline-b { border-bottom: 1px solid var(--color-line); }
+
+.kanji {
+  font-family: var(--font-sans), "Hiragino Sans", sans-serif;
+  font-feature-settings: "palt";
+  letter-spacing: 0.02em;
+}
+
+/* Star/asterisk mark — small SVG-like glyph using CSS */
+.mark-asterisk::before {
+  content: "✱";
+  display: inline-block;
+  color: var(--color-accent);
+  margin-left: 0.15em;
+  font-weight: 400;
 }
